@@ -9,21 +9,33 @@ from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
+from rest_framework.decorators import authentication_classes, permission_classes
+
 # Permissions (optional)
 from rest_framework.permissions import IsAuthenticated, AllowAny
 
+
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
     # Permissions (optional)
     # permission_classes = [IsAuthenticated]  # Require authentication
 
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     # Permissions (optional)
     # permission_classes = [IsAuthenticated]  # Require authentication
 
+@authentication_classes([TokenAuthentication])
+@permission_classes([IsAuthenticated])
 class BillCreateView(APIView):
 
     def post(self, request):
