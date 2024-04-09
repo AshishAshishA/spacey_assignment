@@ -44,9 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'rest_framework.authtoken',
     'drf_yasg',
-]
+]# 'rest_framework.authtoken',
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'billing_sys.urls'
 
@@ -158,5 +158,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # }
 
 SWAGGER_SETTINGS = {
-    
+    'SECURITY_DEFINITIONS': {},
+    'SECURITY': [],
 }
