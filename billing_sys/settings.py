@@ -158,11 +158,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # }
 
 SWAGGER_SETTINGS = {
-#    'SECURITY_DEFINITIONS': {
-#       'Bearer': {
-#          'type': 'apiKey',
-#          'name': 'Authorization',
-#          'in': 'header'
-#       }
-#    }
+    'SECURITY_DEFINITIONS': {
+        'Token': {
+            'type': 'apiKey',
+            'name': 'Authorization',
+            'in': 'header'
+        }
+    }
 }
