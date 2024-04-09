@@ -93,7 +93,7 @@ DATABASES = {
     }
 }
 
-# import dj_database_url
+import dj_database_url
 
 # DATABASE_URL='postgres://ashish:OqpCSficOP116ergORloeyPaazTeD5Sy@dpg-coa62g20si5c73cqrgi0-a.oregon-postgres.render.com/billing_app_u58d'
 
