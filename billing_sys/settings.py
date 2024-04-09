@@ -25,7 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG='True'
 DEBUG = os.environ.get("DEBUG","False").lower() == "true"
+
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
@@ -90,10 +93,15 @@ DATABASES = {
     }
 }
 
-import dj_database_url
+# import dj_database_url
+
+# DATABASE_URL='postgres://ashish:OqpCSficOP116ergORloeyPaazTeD5Sy@dpg-coa62g20si5c73cqrgi0-a.oregon-postgres.render.com/billing_app_u58d'
 
 database_url=os.environ.get("DATABASE_URL")
 DATABASES['default']= dj_database_url.parse(database_url)
+# to be uncommented
+
+
 # postgres://ashish:OqpCSficOP116ergORloeyPaazTeD5Sy@dpg-coa62g20si5c73cqrgi0-a.oregon-postgres.render.com/billing_app_u58d
 
 # 
@@ -132,7 +140,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -141,7 +150,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
+        'utils.custom_authentication.CustomTokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
