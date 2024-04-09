@@ -27,6 +27,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('bills/', BillCreateView.as_view()),
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
+    path('accounts/', include('django.contrib.auth.urls')),  # Includes built-in authentication views
 ]
 
 # path('login/', CustomAuthTokenLogin.as_view()),
